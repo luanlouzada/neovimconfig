@@ -2,14 +2,22 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+-- Adicionando gopls e pylsp à lista de servidores LSP instalados
 lsp.ensure_installed({
-  'tsserver',
-  'rust_analyzer',
+  'gopls',
 })
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+-- Configuração para gopls com gofumpt
+lsp.configure('gopls', {
+  settings = {
+    gopls = {
+      gofumpt = true -- habilita gofumpt
+    }
+  }
+})
 
+
+-- Restante da sua configuração...
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -47,7 +55,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
@@ -57,4 +64,7 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+-- Final do seu arquivo de configuração...
+
 

@@ -14,14 +14,6 @@ return require('packer').startup(function(use)
   }
 
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
-
-  use({
       "folke/trouble.nvim",
       config = function()
           require("trouble").setup {
@@ -40,12 +32,20 @@ return require('packer').startup(function(use)
 				ts_update()
 			end,}
   use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
+  use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+}
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
+  use { "catppuccin/nvim", as = "catppuccin",
+  vim.cmd.colorscheme "catppuccin-macchiato"
+  }
   use("nvim-treesitter/nvim-treesitter-context");
-
+  use("github/copilot.vim")
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -75,4 +75,3 @@ return require('packer').startup(function(use)
   use("laytan/cloak.nvim")
 
 end)
-
