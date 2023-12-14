@@ -36,10 +36,34 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    callback = function()
-        vim.lsp.buf.format()
-    end,
+-- Aqui começa a sua nova função on_attach
+local function on_attach(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({
+            group = ThePrimeagenGroup,
+            buffer = bufnr,
+        })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = ThePrimeagenGroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ buffnr = bufnr })
+            end,
+        })
+    end
+end
+
+-- Configuração do null-ls com on_attach
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.goimports,
+        null_ls.builtins.formatting.black.with({
+            extra_args = { "--line-length", "80" },
+        }),
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.flake8,
+    },
+    on_attach = on_attach,  -- Adicionando aqui
 })
 

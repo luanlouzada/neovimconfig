@@ -2,18 +2,22 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
--- Adicionando gopls e pylsp à lista de servidores LSP instalados
+-- Adicionando gopls à lista de servidores LSP instalados
 lsp.ensure_installed({
-  'gopls',
+  'gopls','pyright',
 })
 
 -- Configuração para gopls com gofumpt
 lsp.configure('gopls', {
   settings = {
     gopls = {
-      gofumpt = true -- habilita gofumpt
-    }
-  }
+      gofumpt = true, -- habilita gofumpt
+      analyses = {
+        unusedparams = true, -- mais análises (opcional)
+        shadow = true,      -- mais análises (opcional)
+      },
+    },
+  },
 })
 
 
