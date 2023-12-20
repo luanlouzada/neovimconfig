@@ -76,5 +76,6 @@ use {
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+  use 'preservim/nerdcommenter'
 
 end)
