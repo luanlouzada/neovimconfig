@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { "jose-elias-alvarez/null-ls.nvim" }
-
+  use 'mg979/vim-visual-multi'
   use 'preservim/nerdtree'
   use 'ryanoasis/vim-devicons'
 
@@ -77,5 +77,6 @@ use {
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
   use 'preservim/nerdcommenter'
+  use 'fatih/vim-go'
 
 end)

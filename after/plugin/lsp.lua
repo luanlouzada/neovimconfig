@@ -21,7 +21,7 @@ lsp.configure('gopls', {
 })
 
 lsp.configure('html', {
-  filetypes = { 'html', 'gohtml' },  -- Adicionando gohtml à lista de filetypes
+  filetypes = { 'html','gohtml' },  -- Adicionando gohtml à lista de filetypes
 })
 
 -- Restante da sua configuração...

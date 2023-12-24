@@ -64,9 +64,9 @@ null_ls.setup({
         null_ls.builtins.formatting.isort,
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.formatting.prettier.with({
-            filetypes = { "html", "css", "json" },
+            extra_args = { "--print-width", "76" },
+            filetypes = { "html", "css", "json", "gohtml" },
         }),
     },
     on_attach = on_attach,  -- Adicionando aqui
 })
-
