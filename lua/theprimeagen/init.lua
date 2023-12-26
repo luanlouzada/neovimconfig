@@ -70,3 +70,5 @@ null_ls.setup({
     },
     on_attach = on_attach,  -- Adicionando aqui
 })
+vim.opt.textwidth = 80
+
