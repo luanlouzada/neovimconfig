@@ -4,7 +4,8 @@ lsp.preset("recommended")
 
 -- Adicionando gopls à lista de servidores LSP instalados
 lsp.ensure_installed({
-  'gopls','pyright','html','cssls','jsonls', 'tailwindcss',
+  'gopls','pyright', 'tailwindcss',
+
 })
 
 -- Configuração para gopls com gofumpt
@@ -20,9 +21,9 @@ lsp.configure('gopls', {
   },
 })
 
-lsp.configure('html', {
-  filetypes = { 'html','gohtml' },  -- Adicionando gohtml à lista de filetypes
-})
+--lsp.configure('html', {
+--  filetypes = { 'html','gohtml' },  -- Adicionando gohtml à lista de filetypes
+--})
 
 -- Restante da sua configuração...
 

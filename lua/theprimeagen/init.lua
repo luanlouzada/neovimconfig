@@ -2,8 +2,8 @@ require("theprimeagen.set")
 require("theprimeagen.remap")
 
 -- DO NOT INCLUDE THIS
-vim.opt.rtp:append("~/personal/streamer-tools")
--- DO NOT INCLUDE THIS
+--vim.opt.rtp:append("~/personal/streamer-tools")
+
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
@@ -56,19 +56,19 @@ end
 -- Configuração do null-ls com on_attach
 local null_ls = require("null-ls")
 null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.goimports,
-        null_ls.builtins.formatting.black.with({
-            extra_args = { "--line-length", "79" },
-        }),
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.formatting.prettier.with({
-            extra_args = { "--print-width", "76" },
-            filetypes = { "html", "css", "json", "gohtml" },
-        }),
-    },
-    on_attach = on_attach,  -- Adicionando aqui
-})
+     sources = {
+         null_ls.builtins.formatting.goimports,
+         null_ls.builtins.formatting.black.with({
+             extra_args = { "--line-length", "79" },
+         }),
+         null_ls.builtins.formatting.isort,
+         null_ls.builtins.diagnostics.flake8,
+         null_ls.builtins.formatting.prettier.with({
+             extra_args = { "--print-width", "79" },
+             filetypes = { "html", "css", "json", "gohtml" },
+         }),
+     },
+     on_attach = on_attach,  -- Adicionando aqui
+ })
 vim.opt.textwidth = 80
 
