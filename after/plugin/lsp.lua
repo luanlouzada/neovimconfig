@@ -4,7 +4,7 @@ lsp.preset("recommended")
 
 -- Adicionando gopls à lista de servidores LSP instalados
 lsp.ensure_installed({
-  'gopls','pyright','html','cssls','jsonls',
+  'gopls','pyright','html','cssls','jsonls', 'tailwindcss',
 })
 
 -- Configuração para gopls com gofumpt
@@ -40,6 +40,13 @@ cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
+})
+cmp.setup({
+  -- ... suas outras configurações de cmp ...
+  formatting = {
+    format = require('tailwindcss-colorizer-cmp').format
+  },
+  -- ... restante da configuração do cmp ...
 })
 
 lsp.set_preferences({
